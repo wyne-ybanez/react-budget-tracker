@@ -1,22 +1,40 @@
 import { createContext, useReducer } from 'react'
 
+// Context accessed through the Provider
+
 const AppReducer = (state, action) => {
-    switch
+  switch (action.type) {
+    default:
+      return state
+  }
 }
 
 const initialState = {
-    budget: 2000,
-    expenses: [
-        { id: 1, name: 'shopping', cost: 50 },
-        { id: 2, name: 'holiday', cost: 400 },
-        { id: 3, name: 'shopping', cost: 50 },
-        { id: 4, name: 'shopping', cost: 50 },
-        { id: 5, name: 'shopping', cost: 50 },
-    ],
+  budget: 2000,
+  expenses: [
+    { id: 1, name: 'Shopping', cost: 50 },
+    { id: 2, name: 'Holiday', cost: 400 },
+    { id: 3, name: 'Fuel', cost: 40 },
+    { id: 4, name: 'Groceries', cost: 30 },
+    { id: 5, name: 'Savings', cost: 100 },
+  ],
 }
 
 export const AppContext = createContext()
 
-const AppProvider = (props) => {
-    const [state, dispatch] = useReducer(AppReducer, initialState)
+export const AppProvider = (props) => {
+  // (state, action) => NewState( Function, initialState )
+  const [state, dispatch] = useReducer(AppReducer, initialState) //This becomes props
+
+  return (
+    <AppContext.Provider
+      value={{
+        budget: state.budget,
+        expenses: state.expenses,
+        dispatch,
+      }}
+    >
+      {props.children}
+    </AppContext.Provider>
+  )
 }
