@@ -9,6 +9,13 @@ const AppReducer = (state, action) => {
         ...state, //current state
         expenses: [...state.expenses, action.payload],
       }
+    case 'DELETE_EXPENSE':
+      return {
+        ...state,
+        expenses: state.expenses.filter(
+          (expense) => expense.id !== action.payload
+        ),
+      }
     default:
       return state
   }
@@ -27,8 +34,9 @@ const initialState = {
 
 export const AppContext = createContext()
 
+// This is the context
+// (state, action) => NewState( Function, initialState )
 export const AppProvider = (props) => {
-  // (state, action) => NewState( Function, initialState )
   const [state, dispatch] = useReducer(AppReducer, initialState) //This becomes props
 
   return (
