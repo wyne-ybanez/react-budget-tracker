@@ -25,7 +25,7 @@ const App = () => {
         </div>
 
         {/* Expenses */}
-        <h3 className="mt-3">Expenses</h3>
+        <h3 className="mt-4">Expenses</h3>
         <div className="row mt-3">
           <div className="col-sm">
             <ExpenseList />
@@ -33,8 +33,8 @@ const App = () => {
         </div>
 
         {/* Expense Form */}
-        <h3 className="mt-3">Add Expense</h3>
-        <div className="row mt-3">
+        <h3 className="mt-4">Add Expense</h3>
+        <div className="row mt-3 mb-5">
           <div className="col-sm">
             <AddExpenseForm />
           </div>
